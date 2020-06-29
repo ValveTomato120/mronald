@@ -1,0 +1,256 @@
+{
+  "command": [
+    {
+      "name": "cmds",
+      "actions": [
+        {
+          "name": "cmdsresponse",
+          "category": "Message",
+          "type": "Send Message",
+          "channelname": "$$CommandChannel$$",
+          "messagetext": "Hello <@$$CommandAuthor$$>, here's a list of commands that I can execute.\n-\n>cmds - displays this menu.\n>mod - displays moderation commands.\n>music - WIP section, not usable.\n>games - WIP section, not usable.\n>server - displays info on this server.\n>bot - displays info on this bot."
+        }
+      ]
+    },
+    {
+      "name": "mod",
+      "actions": [
+        {
+          "name": "modresponse",
+          "category": "Message",
+          "type": "Send Message",
+          "channelname": "$$CommandChannel$$",
+          "messagetext": "Hello <@$$CommandAuthor$$>, here's list of moderation commands I can carry out (if you're a mod.)\n-\n>purge (# of messages) - purges your # of messages.\n>kick (@member) - kicks a member.\n>ban (@member) - bans a member.\n>backup - enables backup commands for members with a \"Manager\" role."
+        }
+      ]
+    },
+    {
+      "name": "purge",
+      "actions": [
+        {
+          "name": "purgeperms?",
+          "category": "User Action",
+          "type": "Check User Permissions",
+          "trueActions": [
+            {
+              "name": "purge#",
+              "category": "Variable",
+              "type": "Store Value in Variable",
+              "varname": "clearvar",
+              "vartype": "Number",
+              "param": "0"
+            },
+            {
+              "name": "del#",
+              "category": "Channel Action",
+              "type": "Delete All Messages",
+              "channelname": "$$CommandChannel$$",
+              "msgcount": "%%clearvar%%"
+            },
+            {
+              "name": "purgeresponse",
+              "category": "Message",
+              "type": "Send Message",
+              "channelname": "$$CommandChannel$$",
+              "messagetext": "I cleaned up those %%clearvar%% messages, <@$$CommandAuthor$$>."
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "wontpurge",
+              "category": "Message",
+              "type": "Send Message",
+              "channelname": "$$CommandChannel$$",
+              "messagetext": "Lol you don't have the perms to purge messages\n-\nhttps://cdn.discordapp.com/attachments/726930083545088081/726930359018717313/spylaugh.mp4"
+            }
+          ],
+          "user": "$$CommandAuthor$$",
+          "permissions": [
+            "MANAGE_MESSAGES"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kick",
+      "actions": [
+        {
+          "name": "kickperms?",
+          "category": "User Action",
+          "type": "Check User Permissions",
+          "trueActions": [
+            {
+              "name": "kickverify",
+              "category": "Variable",
+              "type": "Get Mentioned User",
+              "varname": "kickvar",
+              "vartype": "User"
+            },
+            {
+              "name": "kickuser",
+              "category": "User Action",
+              "type": "Kick User",
+              "user": "%%kickvar%%",
+              "reason": ""
+            },
+            {
+              "name": "kickresponse",
+              "category": "Message",
+              "type": "Send Message",
+              "channelname": "$$CommandChannel$$",
+              "messagetext": "Kicked %%kickvar%%, <@$$CommandAuthor$$>."
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "wontkick",
+              "category": "Message",
+              "type": "Send Message",
+              "channelname": "$$CommandChannel$$",
+              "messagetext": "Lol you don't have the perms to kick users\n-\nhttps://cdn.discordapp.com/attachments/726930083545088081/726930359018717313/spylaugh.mp4"
+            }
+          ],
+          "user": "$$CommandAuthor$$",
+          "permissions": [
+            "KICK_MEMBERS"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ban",
+      "actions": [
+        {
+          "name": "banperms?",
+          "category": "User Action",
+          "type": "Check User Permissions",
+          "trueActions": [
+            {
+              "name": "banverify",
+              "category": "Variable",
+              "type": "Get Mentioned User",
+              "varname": "banvar",
+              "vartype": "User"
+            },
+            {
+              "name": "banuser",
+              "category": "User Action",
+              "type": "Ban User",
+              "user": "%%banvar%%",
+              "reason": "",
+              "days": ""
+            },
+            {
+              "name": "banresponse",
+              "category": "Message",
+              "type": "Send Message",
+              "channelname": "$$CommandChannel$$",
+              "messagetext": "Banned %%banvar%%, <@$$CommandAuthor$$>."
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "wontban",
+              "category": "Message",
+              "type": "Send Message",
+              "channelname": "$$CommandChannel$$",
+              "messagetext": "Lol you don't have the perms to ban users\n-\nhttps://cdn.discordapp.com/attachments/726930083545088081/726930359018717313/spylaugh.mp4"
+            }
+          ],
+          "user": "$$CommandAuthor$$",
+          "permissions": [
+            "BAN_MEMBERS"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "backup",
+      "actions": [
+        {
+          "name": "backupperms?",
+          "category": "User Action",
+          "type": "Check User Permissions",
+          "trueActions": [
+            {
+              "name": "managerrole",
+              "category": "Server Action",
+              "type": "Add Role to Server",
+              "rolename": "Manager",
+              "color": "FF9326",
+              "position": "",
+              "hoist": "false",
+              "mentionable": "false"
+            },
+            {
+              "name": "backupresponse",
+              "category": "Message",
+              "type": "Send Message",
+              "channelname": "$$CommandChannel$$",
+              "messagetext": "Backup enabled, <@$$CommandAuthor$$>. Users with the new \"Manager\" role can purge channels, as well as kick and ban users. Be careful who you give this role to. Commands will be slightly different. \n-\n>mpurge\n>mkick\n>mban"
+            }
+          ],
+          "falseActions": [
+            {
+              "name": "wontbackup",
+              "category": "Message",
+              "type": "Send Message",
+              "channelname": "$$CommandChannel$$",
+              "messagetext": "Lol you can't enable backup commands\n-\nhttps://cdn.discordapp.com/attachments/726930083545088081/726930359018717313/spylaugh.mp4"
+            }
+          ],
+          "user": "$$CommandAuthor$$",
+          "permissions": [
+            "ADMINISTRATOR"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mpurge",
+      "perms": [
+        "manager"
+      ],
+      "actions": [
+        {
+          "name": "mdel#",
+          "category": "Channel Action",
+          "type": "Delete All Messages",
+          "channelname": "$$CommandChannel$$",
+          "msgcount": "%%clearvar%%"
+        }
+      ]
+    },
+    {
+      "name": "mkick",
+      "perms": [
+        "manager"
+      ],
+      "actions": [
+        {
+          "name": "mkickuser",
+          "category": "User Action",
+          "type": "Kick User",
+          "user": "%%kickvar%%",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "name": "mban",
+      "perms": [
+        "manager"
+      ],
+      "actions": [
+        {
+          "name": "mbanuser",
+          "category": "User Action",
+          "type": "Ban User",
+          "user": "%%banvar%%",
+          "reason": "",
+          "days": ""
+        }
+      ]
+    }
+  ]
+}

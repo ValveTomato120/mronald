@@ -1,0 +1,934 @@
+{
+  "nodes": [
+    {
+      "type": "response",
+      "name": "cmdsresponse",
+      "guid": "8a20d12f-54d7-41b0-b4bd-1c5c1a553218",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "0f4c4ffe-cc6f-4fb2-9748-dec710aa35a8"
+        }
+      ],
+      "x": 302,
+      "y": 155,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "$$CommandChannel$$",
+        "Hello <@$$CommandAuthor$$>, here's a list of commands that I can execute.\n-\n>cmds - displays this menu.\n>mod - displays moderation commands.\n>music - WIP section, not usable.\n>games - WIP section, not usable.\n>server - displays info on this server.\n>bot - displays info on this bot."
+      ],
+      "formnames": [
+        "channelName",
+        "messageText"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "cmds",
+      "guid": "0f4c4ffe-cc6f-4fb2-9748-dec710aa35a8",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "8a20d12f-54d7-41b0-b4bd-1c5c1a553218"
+          ]
+        }
+      ],
+      "x": 122,
+      "y": 153
+    },
+    {
+      "type": "command",
+      "name": "mod",
+      "guid": "83eb7a07-b54d-435b-86dc-5778d888775a",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "1969fafd-996c-4eba-9789-8a5eee8831f1"
+          ]
+        }
+      ],
+      "x": 123,
+      "y": 276
+    },
+    {
+      "type": "response",
+      "name": "modresponse",
+      "guid": "1969fafd-996c-4eba-9789-8a5eee8831f1",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "83eb7a07-b54d-435b-86dc-5778d888775a"
+        }
+      ],
+      "x": 302,
+      "y": 279,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "$$CommandChannel$$",
+        "Hello <@$$CommandAuthor$$>, here's list of moderation commands I can carry out (if you're a mod.)\n-\n>purge (# of messages) - purges your # of messages.\n>kick (@member) - kicks a member.\n>ban (@member) - bans a member.\n>backup - enables backup commands for members with a \"Manager\" role."
+      ],
+      "formnames": [
+        "channelName",
+        "messageText"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "purge",
+      "guid": "4e113274-4876-4a3e-abf0-039d69677973",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "4f781b96-8a3b-4d64-a613-44c0d5980a7e"
+          ]
+        }
+      ],
+      "x": 303,
+      "y": 409
+    },
+    {
+      "type": "response",
+      "name": "purge#",
+      "guid": "7b1a09df-835f-4f60-b84a-d7ac49ab615a",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "0a220f5e-b46a-4203-981e-59e8c592e4a3"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "4f781b96-8a3b-4d64-a613-44c0d5980a7e"
+        }
+      ],
+      "x": 666,
+      "y": 421,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "clearvar",
+        "Number",
+        "0"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "param"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "del#",
+      "guid": "0a220f5e-b46a-4203-981e-59e8c592e4a3",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "3e6c07b6-1362-4149-988e-6d123f36d970"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "7b1a09df-835f-4f60-b84a-d7ac49ab615a"
+        }
+      ],
+      "x": 837,
+      "y": 421,
+      "rtype": "Channel Action",
+      "rsubtype": "Delete All Messages",
+      "formdata": [
+        "$$CommandChannel$$",
+        "%%clearvar%%"
+      ],
+      "formnames": [
+        "channelname",
+        "msgcount"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "purgeresponse",
+      "guid": "3e6c07b6-1362-4149-988e-6d123f36d970",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "0a220f5e-b46a-4203-981e-59e8c592e4a3"
+        }
+      ],
+      "x": 1010,
+      "y": 421,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "$$CommandChannel$$",
+        "I cleaned up those %%clearvar%% messages, <@$$CommandAuthor$$>."
+      ],
+      "formnames": [
+        "channelName",
+        "messageText"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "purgeperms?",
+      "guid": "4f781b96-8a3b-4d64-a613-44c0d5980a7e",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "7b1a09df-835f-4f60-b84a-d7ac49ab615a"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "37013eca-34c7-474f-ad52-3c660451176a"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "4e113274-4876-4a3e-abf0-039d69677973"
+        }
+      ],
+      "x": 484,
+      "y": 413,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "$$CommandAuthor$$",
+        [
+          "MANAGE_MESSAGES"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "wontpurge",
+      "guid": "37013eca-34c7-474f-ad52-3c660451176a",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "4f781b96-8a3b-4d64-a613-44c0d5980a7e"
+        }
+      ],
+      "x": 665,
+      "y": 552,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "$$CommandChannel$$",
+        "Lol you don't have the perms to purge messages\n-\nhttps://cdn.discordapp.com/attachments/726930083545088081/726930359018717313/spylaugh.mp4"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "kick",
+      "guid": "5f06efdd-1e8e-43a4-a35f-f2fd0a1b4d1d",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "77fe2042-e760-4d39-b325-a191b484962f"
+          ]
+        }
+      ],
+      "x": 302,
+      "y": 683
+    },
+    {
+      "type": "response",
+      "name": "kickperms?",
+      "guid": "77fe2042-e760-4d39-b325-a191b484962f",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "e60a90d7-5f69-41e4-b3ee-62c4f896fe75"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "aafaee88-5de9-49e3-8b78-b5f9cca94efd"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "5f06efdd-1e8e-43a4-a35f-f2fd0a1b4d1d"
+        }
+      ],
+      "x": 485,
+      "y": 685,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "$$CommandAuthor$$",
+        [
+          "KICK_MEMBERS"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "kickuser",
+      "guid": "7787c609-d1e4-47d7-a5a9-59d1feaeb2ac",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "f38315d1-bc7d-48ae-b5ed-c22ac88872e8"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "e60a90d7-5f69-41e4-b3ee-62c4f896fe75"
+        }
+      ],
+      "x": 829,
+      "y": 686,
+      "rtype": "User Action",
+      "rsubtype": "Kick User",
+      "formdata": [
+        "%%kickvar%%",
+        ""
+      ],
+      "formnames": [
+        "user",
+        "reason"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "kickresponse",
+      "guid": "f38315d1-bc7d-48ae-b5ed-c22ac88872e8",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "7787c609-d1e4-47d7-a5a9-59d1feaeb2ac"
+        }
+      ],
+      "x": 1005,
+      "y": 686,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "$$CommandChannel$$",
+        "Kicked %%kickvar%%, <@$$CommandAuthor$$>."
+      ],
+      "formnames": [
+        "channelName",
+        "messageText"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "kickverify",
+      "guid": "e60a90d7-5f69-41e4-b3ee-62c4f896fe75",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "7787c609-d1e4-47d7-a5a9-59d1feaeb2ac"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "77fe2042-e760-4d39-b325-a191b484962f"
+        }
+      ],
+      "x": 656,
+      "y": 686,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "kickvar",
+        "User"
+      ],
+      "formnames": [
+        "varname",
+        "vartype"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "wontkick",
+      "guid": "aafaee88-5de9-49e3-8b78-b5f9cca94efd",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "77fe2042-e760-4d39-b325-a191b484962f"
+        }
+      ],
+      "x": 654,
+      "y": 820,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "$$CommandChannel$$",
+        "Lol you don't have the perms to kick users\n-\nhttps://cdn.discordapp.com/attachments/726930083545088081/726930359018717313/spylaugh.mp4"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "ban",
+      "guid": "2c4af226-bd81-4476-9eb5-6b400ee93e9d",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "71a886c6-180d-40a9-8127-dc47c7857a0b"
+          ]
+        }
+      ],
+      "x": 301,
+      "y": 962
+    },
+    {
+      "type": "response",
+      "name": "banperms?",
+      "guid": "71a886c6-180d-40a9-8127-dc47c7857a0b",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "bde195d0-5081-410f-8e31-42dc67cd398e"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "933b8b3d-ff4f-4472-92a9-9840eb6f30c3"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "2c4af226-bd81-4476-9eb5-6b400ee93e9d"
+        }
+      ],
+      "x": 488,
+      "y": 962,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "$$CommandAuthor$$",
+        [
+          "BAN_MEMBERS"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "banverify",
+      "guid": "bde195d0-5081-410f-8e31-42dc67cd398e",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "46bc9027-1935-42ac-9302-93f096955034"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "71a886c6-180d-40a9-8127-dc47c7857a0b"
+        }
+      ],
+      "x": 659,
+      "y": 965,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "banvar",
+        "User"
+      ],
+      "formnames": [
+        "varname",
+        "vartype"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "banuser",
+      "guid": "46bc9027-1935-42ac-9302-93f096955034",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "cfc6316e-afb7-4146-bdc9-38fc144e74bb"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "bde195d0-5081-410f-8e31-42dc67cd398e"
+        }
+      ],
+      "x": 834,
+      "y": 966,
+      "rtype": "User Action",
+      "rsubtype": "Ban User",
+      "formdata": [
+        "%%banvar%%",
+        "",
+        ""
+      ],
+      "formnames": [
+        "user",
+        "reason",
+        "days"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "banresponse",
+      "guid": "cfc6316e-afb7-4146-bdc9-38fc144e74bb",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "46bc9027-1935-42ac-9302-93f096955034"
+        }
+      ],
+      "x": 1015,
+      "y": 965,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "$$CommandChannel$$",
+        "Banned %%banvar%%, <@$$CommandAuthor$$>."
+      ],
+      "formnames": [
+        "channelName",
+        "messageText"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "wontban",
+      "guid": "933b8b3d-ff4f-4472-92a9-9840eb6f30c3",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "71a886c6-180d-40a9-8127-dc47c7857a0b"
+        }
+      ],
+      "x": 657,
+      "y": 1095,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "$$CommandChannel$$",
+        "Lol you don't have the perms to ban users\n-\nhttps://cdn.discordapp.com/attachments/726930083545088081/726930359018717313/spylaugh.mp4"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "backup",
+      "guid": "a4b9dd68-57e6-4a0d-b86f-266f002f95f6",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "0e5f2e6c-92a7-48e8-85ed-aeda7d98446a"
+          ]
+        }
+      ],
+      "x": 301,
+      "y": 1222
+    },
+    {
+      "type": "response",
+      "name": "backupperms?",
+      "guid": "0e5f2e6c-92a7-48e8-85ed-aeda7d98446a",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "has perms",
+          "connections": [
+            "4bce6903-1b36-4f81-875f-7dbf6efad0b4"
+          ]
+        },
+        {
+          "label": "doesn't have perms",
+          "connections": [
+            "2ab1875b-f906-43f4-a5f7-19465c5390a9"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "a4b9dd68-57e6-4a0d-b86f-266f002f95f6"
+        }
+      ],
+      "x": 492,
+      "y": 1222,
+      "rtype": "User Action",
+      "rsubtype": "Check User Permissions",
+      "formdata": [
+        "$$CommandAuthor$$",
+        [
+          "ADMINISTRATOR"
+        ]
+      ],
+      "formnames": [
+        "user",
+        "permissions"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "managerrole",
+      "guid": "4bce6903-1b36-4f81-875f-7dbf6efad0b4",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "5c010ce9-3183-4a4e-8607-2c4cbd01e6bb"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "0e5f2e6c-92a7-48e8-85ed-aeda7d98446a"
+        }
+      ],
+      "x": 664,
+      "y": 1222,
+      "rtype": "Server Action",
+      "rsubtype": "Add Role to Server",
+      "formdata": [
+        "Manager",
+        "FF9326",
+        "",
+        "false",
+        "false"
+      ],
+      "formnames": [
+        "rolename",
+        "color",
+        "position",
+        "hoist",
+        "mentionable"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "backupresponse",
+      "guid": "5c010ce9-3183-4a4e-8607-2c4cbd01e6bb",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "4bce6903-1b36-4f81-875f-7dbf6efad0b4"
+        }
+      ],
+      "x": 847,
+      "y": 1224,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "$$CommandChannel$$",
+        "Backup enabled, <@$$CommandAuthor$$>. Users with the new \"Manager\" role can purge channels, as well as kick and ban users. Be careful who you give this role to. Commands will be slightly different. \n-\n>mpurge\n>mkick\n>mban"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "wontbackup",
+      "guid": "2ab1875b-f906-43f4-a5f7-19465c5390a9",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "0e5f2e6c-92a7-48e8-85ed-aeda7d98446a"
+        }
+      ],
+      "x": 664,
+      "y": 1352,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "$$CommandChannel$$",
+        "Lol you can't enable backup commands\n-\nhttps://cdn.discordapp.com/attachments/726930083545088081/726930359018717313/spylaugh.mp4"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "mpurge",
+      "guid": "eae3b0e5-eca9-4cc6-b7bd-4301dcf1624d",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "03fc90c9-1fd5-4e4d-8a2e-406e7b4a67cb"
+          ]
+        }
+      ],
+      "x": 301,
+      "y": 1481,
+      "perms": [
+        "manager"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "mdel#",
+      "guid": "03fc90c9-1fd5-4e4d-8a2e-406e7b4a67cb",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "eae3b0e5-eca9-4cc6-b7bd-4301dcf1624d"
+        }
+      ],
+      "x": 493,
+      "y": 1481,
+      "rtype": "Channel Action",
+      "rsubtype": "Delete All Messages",
+      "formdata": [
+        "$$CommandChannel$$",
+        "%%clearvar%%"
+      ],
+      "formnames": [
+        "channelname",
+        "msgcount"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "mkick",
+      "guid": "e5ab0586-5cb1-439d-a1e7-ffedbe91855d",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "27187ba0-c887-455b-afdc-69fe26ff837e"
+          ]
+        }
+      ],
+      "x": 300,
+      "y": 1621,
+      "perms": [
+        "manager"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "mkickuser",
+      "guid": "27187ba0-c887-455b-afdc-69fe26ff837e",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "e5ab0586-5cb1-439d-a1e7-ffedbe91855d"
+        }
+      ],
+      "x": 492,
+      "y": 1623,
+      "rtype": "User Action",
+      "rsubtype": "Kick User",
+      "formdata": [
+        "%%kickvar%%",
+        ""
+      ],
+      "formnames": [
+        "user",
+        "reason"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "mban",
+      "guid": "3ae07c0c-4e45-4c19-a3da-199418b64612",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "a87bd087-efc5-4f69-9140-39e0b8f862a7"
+          ]
+        }
+      ],
+      "x": 300,
+      "y": 1762,
+      "perms": [
+        "manager"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "mbanuser",
+      "guid": "a87bd087-efc5-4f69-9140-39e0b8f862a7",
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "3ae07c0c-4e45-4c19-a3da-199418b64612"
+        }
+      ],
+      "x": 493,
+      "y": 1763,
+      "rtype": "User Action",
+      "rsubtype": "Ban User",
+      "formdata": [
+        "%%banvar%%",
+        "",
+        ""
+      ],
+      "formnames": [
+        "user",
+        "reason",
+        "days"
+      ]
+    }
+  ]
+}
